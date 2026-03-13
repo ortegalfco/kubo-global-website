@@ -292,10 +292,10 @@ export default function Home() {
 
             {/* CTA como card para que no rompa el grid */}
             <Link
-              href="/demo"
+              href="/contact"
               className="k-surface flex items-center justify-center p-6 text-sm font-semibold text-slate-900 hover:bg-slate-50"
             >
-              Ver demo (Search Lab)
+              Conversar
             </Link>
           </section>
         </section>
