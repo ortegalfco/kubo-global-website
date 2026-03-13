@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --kubo-lime: #d7f70e;
 }
 
 @theme inline {
@@ -19,8 +20,125 @@
   }
 }*/
 
+
+html {
+  scroll-behavior: smooth; 
+  scroll-padding-top: calc(var(--header-h) + 56px); /* ajusta a altura del header */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+   overflow-x: hidden;
+}
+
+
+
+@layer components {
+  .k-surface {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  .k-surface-soft {
+    @apply rounded-2xl border border-slate-200 bg-slate-50/40 shadow-sm;
+  }
+
+  .k-surface-inset {
+    @apply rounded-xl bg-white/90 ring-1 ring-slate-200/70;
+  }
+
+  .k-divider {
+    @apply border-slate-200;
+  }
+}
+
+/* ===== Premium hero motion ===== */
+
+.hero-grid-motion {
+  background-image:
+    linear-gradient(rgba(120, 190, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 190, 255, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center center;
+  animation: heroGridDrift 18s ease-in-out infinite alternate;
+}
+
+.hero-scan-line {
+  top: 12%;
+  background: linear-gradient(
+    180deg,
+    rgba(125, 211, 252, 0.16)10%,
+    rgba(125, 211, 252, 0.10) 35%,
+    rgba(201, 239, 10, 0.14) 50%,
+    rgba(125, 211, 252, 0.10) 65%,
+    rgba(125, 211, 252, 0) 100%
+  );
+  filter: blur(18px);
+  animation: heroScanMove 9s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes heroScanMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0.28;
+  }
+  15% {
+    opacity: 0.32;
+  }
+  50% {
+    transform: translateY(220px);
+    opacity: 0.22;
+  }
+  85% {
+    opacity: 0.30;
+  }
+  100% {
+    transform: translateY(420px);
+    opacity: 0.16;
+  }
+}
+
+@keyframes heroGridDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.20;
+  }
+  50% {
+    transform: translate3d(8px, 6px, 0) scale(1.01);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate3d(-6px, -4px, 0) scale(1.015);
+    opacity: 0.22;
+  }
+}
+
+
+@keyframes carouselVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-carousel {
+  animation: carouselVertical 18s linear infinite;
+}
+
+@keyframes mobileCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.mobile-carousel-track {
+  animation: mobileCarousel 20s linear infinite;
+  will-change: transform;
 }
