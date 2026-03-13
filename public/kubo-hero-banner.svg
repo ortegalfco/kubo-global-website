@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="720" viewBox="0 0 1920 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#07111F"/>
+      <stop offset="42%" stop-color="#0A1A2E"/>
+      <stop offset="100%" stop-color="#0B2340"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1370 260) rotate(90) scale(340 520)">
+      <stop offset="0%" stop-color="#4FC3F7" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#4FC3F7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowOrange" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1510 430) rotate(90) scale(260 460)">
+      <stop offset="0%" stop-color="#FF8A3D" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#FF8A3D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="streamBlue" x1="880" y1="410" x2="1920" y2="270">
+      <stop offset="0%" stop-color="#60C8FF" stop-opacity="0.05"/>
+      <stop offset="20%" stop-color="#60C8FF" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#78D3FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#B3ECFF" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="streamOrange" x1="900" y1="520" x2="1920" y2="350">
+      <stop offset="0%" stop-color="#FF8A3D" stop-opacity="0.03"/>
+      <stop offset="24%" stop-color="#FF8A3D" stop-opacity="0.28"/>
+      <stop offset="58%" stop-color="#FF9E57" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFD2AE" stop-opacity="0.22"/>
+    </linearGradient>
+    <filter id="blur24"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="panelStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#79D4FF" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FF9B59" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="panelFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0E2239" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#112A45" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="leftFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#05101D" stop-opacity="0.94"/>
+      <stop offset="65%" stop-color="#071321" stop-opacity="0.80"/>
+      <stop offset="100%" stop-color="#071321" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="720" fill="url(#bg)"/>
+  <rect width="1920" height="720" fill="url(#glowBlue)"/>
+  <rect width="1920" height="720" fill="url(#glowOrange)"/>
+
+  <!-- Grid -->
+  <g opacity="0.18">
+    <path d="M0 610H1920M0 545H1920M0 480H1920M0 415H1920M0 350H1920M0 285H1920M0 220H1920M0 155H1920M0 90H1920" stroke="#7ACBFF" stroke-width="1"/>
+    <path d="M1300 0V720M1420 0V720M1540 0V720M1660 0V720M1780 0V720" stroke="#7ACBFF" stroke-width="1"/>
+  </g>
+
+  <!-- Skyline -->
+  <g opacity="0.68">
+    <rect x="920" y="250" width="24" height="220" fill="#16314D"/>
+    <rect x="955" y="210" width="36" height="260" fill="#193653"/>
+    <rect x="1000" y="270" width="28" height="200" fill="#18314D"/>
+    <rect x="1040" y="175" width="52" height="295" fill="#1B3B5A"/>
+    <rect x="1106" y="235" width="30" height="235" fill="#18314D"/>
+    <rect x="1148" y="140" width="64" height="330" fill="#21486A"/>
+    <rect x="1230" y="205" width="38" height="265" fill="#183653"/>
+    <rect x="1284" y="160" width="54" height="310" fill="#204668"/>
+    <rect x="1350" y="235" width="42" height="235" fill="#1B3A59"/>
+    <rect x="1407" y="118" width="78" height="352" fill="#255172"/>
+    <rect x="1501" y="198" width="36" height="272" fill="#1F4666"/>
+    <rect x="1550" y="246" width="28" height="224" fill="#1B3B59"/>
+    <rect x="1590" y="186" width="54" height="284" fill="#234C6D"/>
+    <rect x="1660" y="228" width="34" height="242" fill="#1B3A57"/>
+    <rect x="1707" y="155" width="60" height="315" fill="#21496C"/>
+    <rect x="1782" y="230" width="40" height="240" fill="#1A3752"/>
+    <g opacity="0.55">
+      <path d="M1170 165v290M1448 130v330M1737 170v300" stroke="#97E1FF" stroke-width="2"/>
+      <path d="M1407 470 L1485 118" stroke="#9CDFFF" stroke-opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- Horizon haze -->
+  <ellipse cx="1380" cy="470" rx="620" ry="80" fill="#4FC3F7" fill-opacity="0.08" filter="url(#blur24)"/>
+
+  <!-- Data streams -->
+  <path d="M860 502 C1010 485, 1120 430, 1230 450 C1360 475, 1510 385, 1920 250" stroke="url(#streamBlue)" stroke-width="8" fill="none" filter="url(#softGlow)"/>
+  <path d="M820 560 C980 548, 1100 495, 1220 515 C1410 548, 1570 465, 1920 340" stroke="url(#streamOrange)" stroke-width="10" fill="none" filter="url(#softGlow)"/>
+  <path d="M920 442 C1110 420, 1260 355, 1490 380 C1640 395, 1760 330, 1920 300" stroke="#67CBFF" stroke-opacity="0.4" stroke-width="2" fill="none"/>
+  <path d="M900 610 C1080 570, 1240 560, 1440 595 C1570 620, 1730 565, 1920 520" stroke="#FF9B59" stroke-opacity="0.28" stroke-width="2" fill="none"/>
+
+  <!-- Network lines -->
+  <g stroke="#7ED5FF" stroke-opacity="0.28" stroke-width="1.3">
+    <path d="M1180 170L1500 220L1780 150"/>
+    <path d="M1210 210L1460 300L1800 280"/>
+    <path d="M1120 260L1370 370L1700 400"/>
+    <path d="M1050 320L1310 470L1750 520"/>
+    <path d="M1090 420L1440 560L1830 615"/>
+    <path d="M970 510L1260 620L1590 660"/>
+    <path d="M1370 120L1350 600"/>
+    <path d="M1510 140L1490 620"/>
+    <path d="M1640 110L1620 625"/>
+    <path d="M1775 128L1755 620"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <g fill="#8DDEFF">
+      <circle cx="1240" cy="210" r="3"/><circle cx="1320" cy="240" r="4"/><circle cx="1418" cy="215" r="4"/>
+      <circle cx="1510" cy="300" r="5"/><circle cx="1615" cy="260" r="4"/><circle cx="1710" cy="330" r="5"/>
+      <circle cx="1460" cy="390" r="4"/><circle cx="1570" cy="450" r="5"/><circle cx="1690" cy="410" r="4"/>
+      <circle cx="1400" cy="545" r="4"/><circle cx="1535" cy="560" r="5"/><circle cx="1670" cy="580" r="4"/>
+    </g>
+    <g fill="#FF9B59">
+      <circle cx="1360" cy="270" r="4"/><circle cx="1478" cy="350" r="5"/><circle cx="1585" cy="315" r="4"/>
+      <circle cx="1455" cy="485" r="5"/><circle cx="1600" cy="515" r="4"/><circle cx="1735" cy="500" r="5"/>
+    </g>
+  </g>
+
+  <!-- Architecture panels -->
+  <g font-family="Inter, Arial, sans-serif">
+    <g>
+      <rect x="1285" y="182" rx="18" ry="18" width="180" height="62" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1375" y="221" text-anchor="middle" fill="#E8F6FF" font-size="20" font-weight="600" letter-spacing="1.2">SEARCH</text>
+    </g>
+    <g>
+      <rect x="1190" y="278" rx="18" ry="18" width="170" height="58" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1275" y="315" text-anchor="middle" fill="#E8F6FF" font-size="18" font-weight="600" letter-spacing="1">AI</text>
+    </g>
+    <g>
+      <rect x="1150" y="378" rx="20" ry="20" width="240" height="72" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1270" y="423" text-anchor="middle" fill="#E8F6FF" font-size="20" font-weight="600" letter-spacing="1.1">ECOMMERCE</text>
+    </g>
+    <g>
+      <rect x="1110" y="486" rx="20" ry="20" width="245" height="72" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1232" y="531" text-anchor="middle" fill="#E8F6FF" font-size="20" font-weight="600" letter-spacing="1.1">SUPPLY CHAIN</text>
+    </g>
+    <g>
+      <rect x="1290" y="488" rx="20" ry="20" width="205" height="72" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1392" y="533" text-anchor="middle" fill="#E8F6FF" font-size="20" font-weight="600" letter-spacing="1.1">BANKING</text>
+    </g>
+    <g>
+      <rect x="1180" y="598" rx="18" ry="18" width="190" height="62" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="2"/>
+      <text x="1275" y="637" text-anchor="middle" fill="#E8F6FF" font-size="18" font-weight="600" letter-spacing="1">ANALYTICS</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <g stroke="#FF9B59" stroke-opacity="0.55" stroke-width="2">
+    <path d="M1375 244V278"/>
+    <path d="M1275 336V378"/>
+    <path d="M1232 450V486"/>
+    <path d="M1392 450V488"/>
+    <path d="M1275 558V598"/>
+    <path d="M1360 410H1392"/>
+  </g>
+
+  <!-- Cloud / platform shapes -->
+  <g opacity="0.86">
+    <path d="M1015 420c0-19 15-34 34-34 10 0 20 4 26 12 5-20 24-34 45-34 26 0 47 21 47 47 0 2 0 4-1 6 16 4 28 19 28 37 0 21-17 38-38 38h-103c-21 0-38-17-38-38 0-16 10-29 24-34-1 0-1-1-1-1z" stroke="#84DBFF" stroke-width="2.2" fill="#10253D" fill-opacity="0.35"/>
+    <rect x="1490" y="526" width="112" height="82" rx="18" fill="#10253D" fill-opacity="0.25" stroke="#84DBFF" stroke-width="2"/>
+    <rect x="1518" y="548" width="56" height="38" rx="10" fill="#132B45" stroke="#84DBFF" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- Micro charts -->
+  <g opacity="0.7">
+    <rect x="1645" y="430" width="150" height="70" rx="12" fill="#10253D" fill-opacity="0.32" stroke="#79D4FF" stroke-opacity="0.35"/>
+    <path d="M1670 478V450M1690 478V442M1710 478V458M1730 478V435M1750 478V447" stroke="#79D4FF" stroke-width="3"/>
+    <path d="M1768 473L1785 465L1800 448L1820 456" stroke="#FF9B59" stroke-width="2.5" fill="none"/>
+    <rect x="980" y="535" width="120" height="64" rx="12" fill="#10253D" fill-opacity="0.32" stroke="#79D4FF" stroke-opacity="0.35"/>
+    <path d="M1000 580L1022 563L1046 570L1066 548L1088 555" stroke="#79D4FF" stroke-width="2.5" fill="none"/>
+    <circle cx="1066" cy="548" r="3.5" fill="#FF9B59"/>
+  </g>
+
+  <!-- Left dark overlay for text-safe area -->
+  <rect x="0" y="0" width="980" height="720" fill="url(#leftFade)"/>
+
+  <!-- subtle particles -->
+  <g opacity="0.65">
+    <circle cx="880" cy="118" r="1.6" fill="#8EE2FF"/>
+    <circle cx="925" cy="160" r="1.2" fill="#8EE2FF"/>
+    <circle cx="1030" cy="115" r="1.4" fill="#FFB17D"/>
+    <circle cx="1115" cy="145" r="1.2" fill="#8EE2FF"/>
+    <circle cx="1180" cy="102" r="1.5" fill="#8EE2FF"/>
+    <circle cx="1495" cy="98" r="1.5" fill="#FFB17D"/>
+    <circle cx="1610" cy="88" r="1.4" fill="#8EE2FF"/>
+    <circle cx="1762" cy="112" r="1.6" fill="#8EE2FF"/>
+  </g>
+</svg>

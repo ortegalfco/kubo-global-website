@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1920 720">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6 {
+        fill: none;
+      }
+
+      .st0, .st2 {
+        stroke: #ff9b59;
+      }
+
+      .st0, .st2, .st4 {
+        stroke-width: 2px;
+      }
+
+      .st0, .st3 {
+        stroke-opacity: .28;
+      }
+
+      .st7 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st1 {
+        stroke: #7acbff;
+      }
+
+      .st2 {
+        stroke-opacity: .55;
+      }
+
+      .st3 {
+        stroke: #7ed5ff;
+        stroke-width: 1.3px;
+      }
+
+      .st8 {
+        fill: url(#radial-gradient);
+      }
+
+      .st9 {
+        fill: url(#linear-gradient);
+      }
+
+      .st10 {
+        fill: #ffb17d;
+      }
+
+      .st11 {
+        fill: #ff9b59;
+      }
+
+      .st4 {
+        stroke: #67cbff;
+        stroke-opacity: .4;
+      }
+
+      .st5 {
+        stroke: url(#linear-gradient1);
+        stroke-width: 8px;
+      }
+
+      .st6 {
+        stroke: url(#linear-gradient2);
+        stroke-width: 10px;
+      }
+
+      .st12 {
+        opacity: .65;
+      }
+
+      .st13 {
+        opacity: .18;
+      }
+
+      .st14 {
+        fill: url(#radial-gradient1);
+      }
+
+      .st15 {
+        fill: #8ddeff;
+      }
+
+      .st16 {
+        fill: #8ee2ff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="661.66" y1="780.31" x2="662.66" y2="780.31" gradientTransform="translate(-1270378 562179.68) scale(1920 -720)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset=".42" stop-color="#0a1a2e"/>
+      <stop offset="1" stop-color="#0b2340"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient" cx="662.18" cy="779.62" fx="662.18" fy="779.62" r="1" gradientTransform="translate(-404030.71 -224881) rotate(90) scale(340 -520)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4fc3f7" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#4fc3f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient1" cx="662.23" cy="779.45" fx="662.23" fy="779.45" r="1" gradientTransform="translate(-357037.32 -171751) rotate(90) scale(260 -460)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a3d" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient1" x1="1471.61" y1="888.88" x2="2511.61" y2="1028.88" gradientTransform="translate(-700198 196973.24) scale(1060 -252)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#60c8ff" stop-opacity=".05"/>
+      <stop offset=".2" stop-color="#60c8ff" stop-opacity=".35"/>
+      <stop offset=".55" stop-color="#78d3ff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#b3ecff" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient2" x1="1452.89" y1="911.66" x2="2472.89" y2="1081.66" gradientTransform="translate(-726718 172074.76) scale(1100 -220)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a3d" stop-opacity=".03"/>
+      <stop offset=".24" stop-color="#ff8a3d" stop-opacity=".28"/>
+      <stop offset=".58" stop-color="#ff9e57" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffd2ae" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient3" x1="661.32" y1="780.31" x2="662.32" y2="780.31" gradientTransform="translate(-648098 562179.68) scale(980 -720)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#05101d" stop-opacity=".94"/>
+      <stop offset=".65" stop-color="#071321" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#071321" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect class="st9" y="0" width="1920" height="720"/>
+  <rect class="st8" y="0" width="1920" height="720"/>
+  <rect class="st14" y="0" width="1920" height="720"/>
+  <g class="st13">
+    <path class="st1" d="M0,610h1920M0,545h1920M0,480h1920M0,415h1920M0,350h1920M0,285h1920M0,220h1920M0,155h1920M0,90h1920"/>
+    <path class="st1" d="M1300,0v720M1420,0v720M1540,0v720M1660,0v720M1780,0v720"/>
+  </g>
+  <path class="st5" d="M860,502c150-17,260-72,370-52,130,25,280-65,690-200"/>
+  <path class="st6" d="M820,560c160-12,280-65,400-45,190,33,350-50,700-175"/>
+  <path class="st4" d="M920,442c190-22,340-87,570-62,150,15,270-50,430-80"/>
+  <path class="st0" d="M900,610c180-40,340-50,540-15,130,25,290-30,480-75"/>
+  <g>
+    <path class="st3" d="M1180,170l320,50,280-70"/>
+    <path class="st3" d="M1210,210l250,90,340-20"/>
+    <path class="st3" d="M1120,260l250,110,330,30"/>
+    <path class="st3" d="M1050,320l260,150,440,50"/>
+    <path class="st3" d="M1090,420l350,140,390,55"/>
+    <path class="st3" d="M970,510l290,110,330,40"/>
+    <path class="st3" d="M1370,120l-20,480"/>
+    <path class="st3" d="M1510,140l-20,480"/>
+    <path class="st3" d="M1640,110l-20,515"/>
+    <path class="st3" d="M1775,128l-20,492"/>
+  </g>
+  <g>
+    <g>
+      <circle class="st15" cx="1240" cy="210" r="3"/>
+      <circle class="st15" cx="1320" cy="240" r="4"/>
+      <circle class="st15" cx="1418" cy="215" r="4"/>
+      <circle class="st15" cx="1510" cy="300" r="5"/>
+      <circle class="st15" cx="1615" cy="260" r="4"/>
+      <circle class="st15" cx="1710" cy="330" r="5"/>
+      <circle class="st15" cx="1460" cy="390" r="4"/>
+      <circle class="st15" cx="1570" cy="450" r="5"/>
+      <circle class="st15" cx="1690" cy="410" r="4"/>
+      <circle class="st15" cx="1400" cy="545" r="4"/>
+      <circle class="st15" cx="1535" cy="560" r="5"/>
+      <circle class="st15" cx="1670" cy="580" r="4"/>
+    </g>
+    <g>
+      <circle class="st11" cx="1360" cy="270" r="4"/>
+      <circle class="st11" cx="1478" cy="350" r="5"/>
+      <circle class="st11" cx="1585" cy="315" r="4"/>
+      <circle class="st11" cx="1455" cy="485" r="5"/>
+      <circle class="st11" cx="1600" cy="515" r="4"/>
+      <circle class="st11" cx="1735" cy="500" r="5"/>
+    </g>
+  </g>
+  <g>
+    <path class="st2" d="M1375,244v34"/>
+    <path class="st2" d="M1275,336v42"/>
+    <path class="st2" d="M1232,450v36"/>
+    <path class="st2" d="M1392,450v38"/>
+    <path class="st2" d="M1275,558v40"/>
+    <path class="st2" d="M1360,410h32"/>
+  </g>
+  <rect class="st7" y="0" width="980" height="720"/>
+  <g class="st12">
+    <circle class="st16" cx="880" cy="118" r="1.6"/>
+    <circle class="st16" cx="925" cy="160" r="1.2"/>
+    <circle class="st10" cx="1030" cy="115" r="1.4"/>
+    <circle class="st16" cx="1115" cy="145" r="1.2"/>
+    <circle class="st16" cx="1180" cy="102" r="1.5"/>
+    <circle class="st10" cx="1495" cy="98" r="1.5"/>
+    <circle class="st16" cx="1610" cy="88" r="1.4"/>
+    <circle class="st16" cx="1762" cy="112" r="1.6"/>
+  </g>
+</svg>
