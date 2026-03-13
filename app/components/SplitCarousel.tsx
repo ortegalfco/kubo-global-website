@@ -95,164 +95,152 @@ export function SplitCarousel() {
   const next = () => setIndex((i) => (i + 1) % slides.length);
   const goTo = (i: number) => setIndex(i);
 
-  /* swipe control (solo touch) */
-  const trackRef = useRef<HTMLDivElement | null>(null);
   const startX = useRef<number | null>(null);
-  const deltaX = useRef(0);
+  const startY = useRef<number | null>(null);
 
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "touch") return;
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0];
+    startX.current = touch.clientX;
+    startY.current = touch.clientY;
     setPaused(true);
-    startX.current = e.clientX;
-    deltaX.current = 0;
-    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
   };
 
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "touch") return;
-    if (startX.current == null) return;
-    deltaX.current = e.clientX - startX.current;
-  };
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (startX.current == null || startY.current == null) {
+      setPaused(false);
+      return;
+    }
 
-  const endSwipe = () => {
-    setPaused(false);
-    if (startX.current == null) return;
-
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - startX.current;
+    const dy = touch.clientY - startY.current;
     const threshold = 50;
-    const dx = deltaX.current;
+
+    if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next();
+      else prev();
+    }
 
     startX.current = null;
-    deltaX.current = 0;
-
-    if (Math.abs(dx) < threshold) return;
-    if (dx < 0) next();
-    else prev();
-  };
-
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "touch") return;
-    endSwipe();
-  };
-
-  const onPointerCancel = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "touch") return;
-    endSwipe();
+    startY.current = null;
+    setPaused(false);
   };
 
   return (
     <section
-      className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white text-slate-900 shadow-sm"
+      className="relative overflow-hidden rounded-[24px] md:rounded-3xl border border-slate-200 bg-white text-slate-900 shadow-sm"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Línea superior marca */}
       <div
         className="h-[1px]"
         style={{ backgroundColor: "rgb(215 247 14 / 0.6)" }}
       />
 
-      {/* Track (slides) */}
-      <div
-        ref={trackRef}
-        className="flex select-none touch-pan-x transition-transform duration-500 ease-out cursor-grab active:cursor-grabbing"
-        style={{ transform: `translateX(-${index * 100}%)` }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}
-      >
-        {slides.map((s, i) => (
-          <div key={i} className="w-full shrink-0">
-            <div className="relative overflow-hidden rounded-3xl">
-              {/* Imagen de fondo opcional */}
-              {s.image && (
-                <div className="absolute inset-0">
-                  <img
-                    src={s.image}
-                    alt=""
-                    className="h-full w-full object-cover opacity-20"
-                  />
-                  <div className="absolute inset-0 bg-white/75 backdrop-blur-sm" />
-                </div>
-              )}
-
-              {/* Contenido */}
-              <div className="relative grid md:grid-cols-12">
-                {/* Left panel */}
-                <div className="md:col-span-4 border-b border-slate-200 md:border-b-0 md:border-r p-6 md:p-10">
-                  <div className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                    {s.eyebrow}
+      <div className="overflow-hidden">
+        <div
+          className="flex select-none transition-transform duration-500 ease-out"
+          style={{
+            transform: `translateX(-${index * 100}%)`,
+            touchAction: "pan-y",
+          }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {slides.map((s, i) => (
+            <div key={i} className="w-full shrink-0">
+              <div className="relative overflow-hidden rounded-[24px] md:rounded-3xl">
+                {s.image && (
+                  <div className="absolute inset-0">
+                    <img
+                      src={s.image}
+                      alt=""
+                      className="h-full w-full object-cover opacity-20"
+                    />
+                    <div className="absolute inset-0 bg-white/75 backdrop-blur-sm" />
                   </div>
+                )}
 
-                  {/* Inset card (homologado) */}
-                  <div className="mt-6 rounded-2xl bg-white p-6 ring-1 ring-slate-200/70">
-                    <div className="text-xs uppercase tracking-widest text-slate-500">
-                      {s.leftLabel}
+                <div className="relative grid md:grid-cols-12">
+                  {/* Left panel */}
+                  <div className="border-b border-slate-200 px-4 py-4 md:col-span-4 md:border-b-0 md:border-r md:p-10">
+                    <div className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700 md:text-xs">
+                      {s.eyebrow}
                     </div>
-                    <div className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">
-                      {s.leftValue}
+
+                    <div className="mt-4 rounded-xl md:rounded-2xl bg-white p-4 md:mt-6 md:p-6 ring-1 ring-slate-200/70">
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500 md:text-xs md:tracking-widest">
+                        {s.leftLabel}
+                      </div>
+                      <div className="mt-2 text-lg font-semibold tracking-tight md:mt-3 md:text-2xl">
+                        {s.leftValue}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Right panel */}
-                <div className="md:col-span-8 p-6 md:p-10">
-                  <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                    {s.title}
-                  </h2>
+                  {/* Right panel */}
+                  <div className="px-4 py-5 md:col-span-8 md:p-10">
+<h2 className="text-[1.42rem] leading-[1.08] font-semibold tracking-tight md:text-4xl">
+                        {s.title}
+                    </h2>
 
-                  <p className="mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-                    {s.description}
-                  </p>
-
-                  {/* Quote card (homologado) */}
-                  <div className="mt-8 rounded-2xl bg-white p-6 ring-1 ring-slate-200/70 md:p-8">
-                    <div className="mb-4 h-px w-10 bg-slate-200" />
-                    <p className="text-base leading-relaxed text-slate-700 md:text-lg">
-                      “{s.quote}”
+                    <p className="mt-3 max-w-2xl text-[15px] leading-6 text-slate-600 md:mt-4 md:text-lg">
+                      {s.description}
                     </p>
-                    <div className="mt-4 text-sm text-slate-500">
-                      <div className="font-semibold text-slate-700">{s.author}</div>
-                      <div>{s.role}</div>
+
+<div className="mt-4 rounded-xl md:mt-8 md:rounded-2xl bg-white p-3.5 md:p-8 ring-1 ring-slate-200/70">
+                      <div className="mb-3 h-px w-8 bg-slate-200 md:mb-4 md:w-10" />
+                      <p className="text-[15px] leading-6 text-slate-700 md:text-lg md:leading-relaxed">
+                        “{s.quote}”
+                      </p>
+                      <div className="mt-3 text-xs text-slate-500 md:mt-4 md:text-sm">
+                        <div className="font-semibold text-slate-700">{s.author}</div>
+                        <div>{s.role}</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <Link
-                      href={s.primaryCta.href}
-                      className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
-                    >
-                      {s.primaryCta.label}
-                    </Link>
+                    <div className="mt-5 flex flex-col gap-2.5 sm:flex-row md:mt-8 md:gap-3">
+                      <Link
+                        href={s.primaryCta.href}
+                        className="inline-flex h-9 items-center justify-center rounded-lg md:rounded-xl bg-slate-900 px-4 md:px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      >
+                        {s.primaryCta.label}
+                      </Link>
 
-                    <Link
-                      href={s.secondaryCta.href}
-                      className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                    >
-                      {s.secondaryCta.label}
-                    </Link>
+                      <Link
+                        href={s.secondaryCta.href}
+                        className="inline-flex h-9 items-center justify-center rounded-lg md:rounded-xl border border-slate-300 bg-white px-4 md:px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                      >
+                        {s.secondaryCta.label}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Footer controls */}
-      <div className="flex justify-center pb-4 pt-3">
+      <div className="flex justify-center px-3 pb-3 pt-2 md:px-4 md:pb-4 md:pt-3">
         <div className="flex items-center gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => goTo(i)}
               aria-label={`Ir a slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index
-                  ? "w-8 bg-slate-900"
-                  : "w-4 bg-slate-300 hover:bg-slate-400"
-              }`}
-            />
+              aria-current={i === index}
+              className="inline-flex h-8 items-center justify-center px-1.5"
+            >
+              <span
+                className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-8 bg-slate-900"
+                    : "w-4 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>
