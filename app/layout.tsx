@@ -52,6 +52,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Enterprise Search Consulting",
   serviceType: "Technology Consulting",
+  category: "Enterprise Search Consulting",
   provider: {
     "@type": "Organization",
     name: "Kubo Global",
@@ -63,7 +64,7 @@ const serviceSchema = {
     "@type": "Country",
     name: "Mexico"
   },
-  knowsAbout: [
+  about: [
     "Apache Solr",
     "Lucidworks",
     "Enterprise Search",
