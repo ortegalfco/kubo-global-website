@@ -5,12 +5,15 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
+import AuthButton from "./AuthButton";
+
 
 const navItems = [
   { href: "/model", label: "Modelo" },
   { href: "/services", label: "Qué hacemos" },
   { href: "/domains", label: "Dominios" },
   { href: "/search", label: "Search Platform" },
+  { href: "/demo", label: "Search Lab" },
   { href: "/contact", label: "Conversar" },
 ];
 
@@ -135,46 +138,49 @@ export function Header() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            <nav className="flex items-center gap-1">
-              {navItems
-                .filter((i) => i.href !== "/contact")
-                .map((item) => {
-                  const active = pathname === item.href;
+<div className="hidden md:flex items-center gap-3">
+  <nav className="flex items-center gap-1">
+    {navItems
+      .filter((i) => i.href !== "/contact")
+      .map((item) => {
+        const active = pathname === item.href;
 
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={[
-                        "relative px-3 py-2 text-sm font-medium transition-colors duration-200",
-                        "after:content-[''] after:absolute after:left-3 after:right-3 after:bottom-1 after:h-[2px]",
-                        "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
-                        active
-                          ? "after:scale-x-100 after:bg-[rgb(215_247_14)]"
-                          : useDarkLogo
-                            ? "text-slate-700 hover:text-slate-900 after:bg-[rgb(215_247_14)] hover:after:scale-x-100"
-                            : "text-white/90 hover:text-white after:bg-[rgb(215_247_14)] hover:after:scale-x-100",
-                      ].join(" ")}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
-            </nav>
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={[
+              "relative px-3 py-2 text-sm font-medium transition-colors duration-200",
+              "after:content-[''] after:absolute after:left-3 after:right-3 after:bottom-1 after:h-[2px]",
+              "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
+              active
+                ? "after:scale-x-100 after:bg-[rgb(215_247_14)]"
+                : useDarkLogo
+                  ? "text-slate-700 hover:text-slate-900 after:bg-[rgb(215_247_14)] hover:after:scale-x-100"
+                  : "text-white/90 hover:text-white after:bg-[rgb(215_247_14)] hover:after:scale-x-100",
+            ].join(" ")}
+          >
+            {item.label}
+          </Link>
+        );
+      })}
+  </nav>
 
-            <Link
-              href="/contact"
-              className={[
-                "inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm transition duration-200",
-                useDarkLogo
-                  ? "bg-slate-900 text-white hover:ring-2 hover:ring-[rgb(215_247_14_/_0.35)]"
-                  : "bg-white/15 text-white border border-white/20 backdrop-blur hover:bg-white/20",
-              ].join(" ")}
-            >
-              Conversar
-            </Link>
-          </div>
+  {/* 👇 AQUI VA EL AUTH */}
+  <AuthButton dark={useDarkLogo} />
+
+  <Link
+    href="/contact"
+    className={[
+      "inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm transition duration-200",
+      useDarkLogo
+        ? "bg-slate-900 text-white hover:ring-2 hover:ring-[rgb(215_247_14_/_0.35)]"
+        : "bg-white/15 text-white border border-white/20 backdrop-blur hover:bg-white/20",
+    ].join(" ")}
+  >
+    Conversar
+  </Link>
+</div>
 
           {/* Mobile */}
           <div className="flex md:hidden items-center gap-2">
@@ -211,27 +217,32 @@ export function Header() {
       {/* Mobile dropdown */}
       {mobileOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white">
-          <div className={CONTAINER + " py-3"}>
-            <nav className="flex flex-col gap-1">
-              {navItems.map((item) => {
-                const active = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={[
-                      "rounded-md px-3 py-2 text-sm font-medium transition",
-                      active
-                        ? "bg-slate-900 text-white"
-                        : "text-slate-700 hover:bg-slate-100 hover:text-slate-900",
-                    ].join(" ")}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
+<div className={CONTAINER + " py-3"}>
+  <nav className="flex flex-col gap-1">
+    {navItems.map((item) => {
+      const active = pathname === item.href;
+      return (
+        <Link
+          key={item.href}
+          href={item.href}
+          className={[
+            "rounded-md px-3 py-2 text-sm font-medium transition",
+            active
+              ? "bg-slate-900 text-white"
+              : "text-slate-700 hover:bg-slate-100 hover:text-slate-900",
+          ].join(" ")}
+        >
+          {item.label}
+        </Link>
+      );
+    })}
+  </nav>
+
+  {/* 👇 AUTH EN MOBILE */}
+  <div className="mt-3 border-t border-slate-200 pt-3">
+    <AuthButton mobile dark />
+  </div>
+</div>
         </div>
       )}
     </header>
