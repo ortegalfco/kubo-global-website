@@ -3,10 +3,10 @@ import GoogleProvider from "next-auth/providers/google";
 
 const allowedEmails = [
   "francisco.ortega@kubo-global.com",
-  "ortega.lfco@gmail.com"
-  // "cliente@empresa.com",
-];
-console.log("GOOGLE_CLIENT_ID", process.env.GOOGLE_CLIENT_ID);
+  "ortega.lfco@gmail.com",
+].map((email) => email.trim().toLowerCase());
+
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({

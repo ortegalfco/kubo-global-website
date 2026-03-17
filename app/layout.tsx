@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Header } from "./components/Header";
+import AuthProvider from "./components/AuthProvider";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -159,6 +160,7 @@ export default function RootLayout({
 </head>
 
       <body className="min-h-screen bg-white text-slate-900">
+          <AuthProvider>
         <Header />
 
         <main className="w-full">{children}</main>
@@ -199,6 +201,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        </AuthProvider>
       </body>
     </html>
   );

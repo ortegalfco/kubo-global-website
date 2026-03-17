@@ -11,7 +11,7 @@ export default function LoginPage() {
         </h1>
 
         <p className="mt-3 text-sm text-slate-600">
-          Inicia sesión con Google para acceder al demo privado.
+          Inicia sesión con Google para acceder al demo privado jfrol.
         </p>
 
         <button
