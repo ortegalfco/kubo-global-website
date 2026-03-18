@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Header } from "./components/Header";
 import AuthProvider from "./components/AuthProvider";
+import { WhatsAppFloat } from "./components/WhatsAppFloat";
+
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -200,8 +202,13 @@ export default function RootLayout({
 
             </div>
           </div>
+                  <WhatsAppFloat
+          phone="526674748224"
+          message="Hola, me interesa conocer más sobre las capacidades de Kubo Global."
+        />
         </footer>
         </AuthProvider>
+
       </body>
     </html>
   );
