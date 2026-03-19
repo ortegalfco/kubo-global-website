@@ -202,10 +202,7 @@ export default function RootLayout({
 
             </div>
           </div>
-                  <WhatsAppFloat
-          phone="526674748224"
-          message="Hola, me interesa conocer más sobre las capacidades de Kubo Global."
-        />
+        <WhatsAppFloat phone="526674748224" />
         </footer>
         </AuthProvider>
 
