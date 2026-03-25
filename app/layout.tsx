@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import AuthProvider from "./components/AuthProvider";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 
-
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 /* ===============================
@@ -20,10 +19,8 @@ const organizationSchema = {
   description:
     "Consultoría tecnológica especializada en Search & AI, eCommerce y plataformas digitales complejas.",
   email: "contacto@kubo-global.com",
-  sameAs: [
-    "https://www.linkedin.com/company/kubo-global"
-  ],
-  areaServed: "MX"
+  sameAs: ["https://www.linkedin.com/company/kubo-global"],
+  areaServed: "MX",
 };
 
 const personSchema = {
@@ -34,20 +31,18 @@ const personSchema = {
   worksFor: {
     "@type": "Organization",
     name: "Kubo Global",
-    url: baseUrl
+    url: baseUrl,
   },
   url: baseUrl,
-  sameAs: [
-    "https://www.linkedin.com/in/jose-francisco-ortega-leyva"
-  ],
+  sameAs: ["https://www.linkedin.com/in/jose-francisco-ortega-leyva"],
   knowsAbout: [
     "Apache Solr",
     "Enterprise Search",
     "Search Architecture",
     "Semantic Search",
     "eCommerce Search",
-    "Lucidworks Fusion"
-  ]
+    "Lucidworks Fusion",
+  ],
 };
 
 const serviceSchema = {
@@ -59,13 +54,13 @@ const serviceSchema = {
   provider: {
     "@type": "Organization",
     name: "Kubo Global",
-    url: baseUrl
+    url: baseUrl,
   },
   description:
     "Consultoría especializada en plataformas de búsqueda empresarial, Apache Solr, eCommerce search y arquitecturas modernas de search.",
   areaServed: {
     "@type": "Country",
-    name: "Mexico"
+    name: "Mexico",
   },
   about: [
     "Apache Solr",
@@ -73,10 +68,9 @@ const serviceSchema = {
     "Enterprise Search",
     "Semantic Search",
     "Vector Search",
-    "eCommerce Search Optimization"
-  ]
+    "eCommerce Search Optimization",
+  ],
 };
-
 
 /* ===============================
    Metadata
@@ -116,7 +110,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
- 
+
   twitter: {
     card: "summary_large_image",
     title: "Kubo Global — Tecnología y Estrategia",
@@ -133,79 +127,74 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-<head>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
+          }}
+        />
 
-  {/* Organization */}
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
-    }}
-  />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
+          }}
+        />
 
-  {/* Person */}
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
-    }}
-  />
-
-  {/* Service */}
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
-    }}
-  />
-
-</head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      </head>
 
       <body className="min-h-screen bg-white text-slate-900">
-          <AuthProvider>
-        <Header />
+        <AuthProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
 
-        <main className="w-full">{children}</main>
+            <main className="w-full flex-1">{children}</main>
 
-        <footer className="relative mt-12 bg-white">
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgb(215_247_14_/_0.6)]" />
+            <footer className="relative mt-12 bg-white">
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgb(215_247_14_/_0.6)]" />
 
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                  <div className="text-sm text-slate-600">
+                    <div className="font-semibold text-slate-900">Kubo Global</div>
 
-              <div className="text-sm text-slate-600">
-                <div className="font-semibold text-slate-900">Kubo Global</div>
+                    <div className="mt-2 text-slate-500">
+                      Tecnología y estrategia para operaciones complejas.
+                    </div>
 
-                <div className="mt-2 text-slate-500">
-                  Tecnología y estrategia para operaciones complejas.
-                </div>
+                    <div className="mt-4 text-xs text-slate-400">
+                      © {new Date().getFullYear()} Kubo Global
+                    </div>
+                  </div>
 
-                <div className="mt-4 text-slate-400 text-xs">
-                  © {new Date().getFullYear()} Kubo Global
+                  <div className="flex flex-col gap-2 text-sm text-slate-500 md:items-end">
+                    <a
+                      href="mailto:contacto@kubo-global.com"
+                      className="transition hover:text-slate-700"
+                    >
+                      contacto@kubo-global.com
+                    </a>
+
+                    <div className="flex items-center gap-2 text-xs text-slate-400">
+                      <span>Estrategia clara.</span>
+                      <span className="opacity-50">•</span>
+                      <span>Tecnología con propósito.</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex flex-col gap-2 text-sm text-slate-500 md:items-end">
-                <a
-                  href="mailto:contacto@kubo-global.com"
-                  className="transition hover:text-slate-700"
-                >
-                  contacto@kubo-global.com
-                </a>
-
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <span>Estrategia clara.</span>
-                  <span className="opacity-50">•</span>
-                  <span>Tecnología con propósito.</span>
-                </div>
-              </div>
-
-            </div>
+            </footer>
           </div>
-        <WhatsAppFloat phone="526674748224" />
-        </footer>
-        </AuthProvider>
 
+          <WhatsAppFloat phone="526674748224" />
+        </AuthProvider>
       </body>
     </html>
   );

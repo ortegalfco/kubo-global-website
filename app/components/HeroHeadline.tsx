@@ -52,6 +52,17 @@ export default function HeroHeadline() {
           Tecnología cuando <span className="text-[#c9ef0a]">agrega valor.</span>
         </motion.span>
       </h2>
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.44, ease: "easeOut" }}
+        className="mt-6 text-sm md:text-base text-white/70 max-w-2xl text-center"
+      >
+        Conectamos estrategia y tecnología a través de{" "}
+        <span className="text-white font-medium tracking-tight">
+          decisiones de producto
+        </span>.
+      </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 14 }}

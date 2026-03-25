@@ -80,7 +80,7 @@ const phases: Phase[] = [
     id: "transferencia",
     step: "6",
     title: "Transferencia (Capability Building)",
-    desc: "Cuando aplica, dejamos capacidad instalada: estructura, gobernanza y medición para sostener el resultado.",
+    desc: "Cuando aplica, dejamos capacidad instalada o continuamos operando como una extensión de Product Ownership dentro de la organización.",
     outputs: [
       "Playbook operativo",
       "KPIs y tableros",
