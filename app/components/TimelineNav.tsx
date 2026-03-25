@@ -1,121 +1,90 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
 
 export type TimelineItem = {
-  id: string;
-  num: string;
+  id?: string;
+  num?: string;
   title: string;
-  shortTitle?: string;
 };
 
-type Props = {
+type TimelineNavProps = {
   label?: string;
   items: TimelineItem[];
   ctaHref?: string;
   ctaLabel?: string;
-  rootMarginTopPx?: number;
 };
 
 export default function TimelineNav({
-  label = "Framework",
+  label,
   items,
   ctaHref,
   ctaLabel,
-  rootMarginTopPx = 110,
-}: Props) {
-  const ids = useMemo(() => items.map((x) => x.id), [items]);
-  const [activeId, setActiveId] = useState<string>(items[0]?.id ?? "");
+}: TimelineNavProps) {
+  const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+  const [isMounted, setIsMounted] = useState(false);
+
   const isClickScrollingRef = useRef(false);
   const clickScrollTimeoutRef = useRef<number | null>(null);
 
-  const setFromHash = () => {
-    const hash = window.location.hash?.replace("#", "");
-    if (hash && ids.includes(hash)) setActiveId(hash);
-  };
+  const mobileNavRef = useRef<HTMLDivElement | null>(null);
+  const mobileItemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    setFromHash();
-    const onHash = () => setFromHash();
-    window.addEventListener("hashchange", onHash);
-
-    return () => window.removeEventListener("hashchange", onHash);
-  }, [ids]);
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isClickScrollingRef.current) return;
-
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .map((e) => e.target as HTMLElement);
-
-        if (!visible.length) return;
-
-        visible.sort(
-          (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
-        );
-
-        const next = visible[0]?.id;
-        if (next && ids.includes(next)) setActiveId(next);
-      },
-      {
-        root: null,
-        rootMargin: `-${rootMarginTopPx}px 0px -58% 0px`,
-        threshold: [0.05, 0.2, 0.4, 0.6],
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [ids, rootMarginTopPx]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const lastId = ids[ids.length - 1];
-    if (!lastId) return;
-
     const onScroll = () => {
-      const doc = document.documentElement;
-      const scrollTop = window.scrollY || doc.scrollTop;
-      const viewport = window.innerHeight;
-      const full = doc.scrollHeight;
+      if (isClickScrollingRef.current) return;
 
-      const nearBottom = scrollTop + viewport >= full - 64;
+      const headerOffset = 150;
+      let current = items[0]?.id ?? "";
 
-      if (nearBottom) {
-        isClickScrollingRef.current = true;
-        setActiveId(lastId);
+      for (const item of items) {
+        if (!item.id) continue;
 
-        if (clickScrollTimeoutRef.current) {
-          window.clearTimeout(clickScrollTimeoutRef.current);
+        const el = document.getElementById(item.id);
+        if (!el) continue;
+
+        const top = el.getBoundingClientRect().top;
+        if (top <= headerOffset) {
+          current = item.id;
         }
+      }
 
-        clickScrollTimeoutRef.current = window.setTimeout(() => {
-          isClickScrollingRef.current = false;
-        }, 400);
+      if (current && current !== activeId) {
+        setActiveId(current);
       }
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [ids]);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [items, activeId]);
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+      if (items.some((item) => item.id === hash)) {
+        setActiveId(hash);
+      }
+    };
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+
+    return () => {
+      window.removeEventListener("hashchange", syncFromHash);
+    };
+  }, [items]);
 
   useEffect(() => {
     return () => {
@@ -125,7 +94,52 @@ export default function TimelineNav({
     };
   }, []);
 
-  const handleClick = (id: string) => {
+useEffect(() => {
+  if (typeof window === "undefined") return;
+  if (window.innerWidth >= 1024) return;
+  if (!activeId) return;
+
+  const container = mobileNavRef.current;
+  const activeEl = mobileItemRefs.current[activeId];
+  if (!container || !activeEl) return;
+
+  const containerRect = container.getBoundingClientRect();
+  const activeRect = activeEl.getBoundingClientRect();
+
+  const currentScrollLeft = container.scrollLeft;
+  const activeCenter =
+    activeRect.left - containerRect.left + currentScrollLeft + activeRect.width / 2;
+
+  const targetScrollLeft = activeCenter - containerRect.width / 2;
+
+  container.scrollTo({
+    left: Math.max(0, targetScrollLeft),
+    behavior: "smooth",
+  });
+}, [activeId]);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const mobile = window.innerWidth < 768;
+    const headerOffset = mobile ? 156 : 132;
+
+    const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    window.history.replaceState(null, "", `#${id}`);
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
+
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+
     setActiveId(id);
     isClickScrollingRef.current = true;
 
@@ -133,99 +147,128 @@ export default function TimelineNav({
       window.clearTimeout(clickScrollTimeoutRef.current);
     }
 
+    scrollToSection(id);
+
     clickScrollTimeoutRef.current = window.setTimeout(() => {
       isClickScrollingRef.current = false;
-    }, 700);
+    }, 750);
   };
 
+  if (!isMounted || items.length === 0) return null;
+
   return (
-    <div className="sticky top-[calc(var(--header-h)+10px)] z-40">
-      <div className="rounded-2xl border border-slate-200/80 bg-white/92 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur">
-        <div className="px-3 py-3 md:px-4">
-          <div className="flex items-center gap-4">
-            <p className="hidden shrink-0 text-xs font-medium uppercase tracking-[0.16em] text-slate-500 md:block">
-              {label}
-            </p>
+    <section className="sticky top-[calc(var(--header-h)+10px)] z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/78">
+      <div className="mx-auto max-w-7xl px-4 py-3 md:px-6">
+        <div className="hidden items-center justify-between gap-6 lg:flex">
+          <div className="min-w-0">
+            {label ? (
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-slate-500">
+                {label}
+              </p>
+            ) : null}
 
-            <nav className="min-w-0 flex-1">
-              {/* MOBILE */}
-              <ul className="flex w-full items-center gap-2 overflow-x-auto pb-1 md:hidden [-webkit-overflow-scrolling:touch]">
-                {items.map((it) => {
-                  const isActive = it.id === activeId;
-                  const chipLabel = it.shortTitle ?? it.title;
+            <nav className="mt-2 flex flex-wrap gap-2">
+              {items.map((it) => {
+                const active = activeId === it.id;
 
-                  return (
-                    <li key={it.id} className="shrink-0">
-                      <a
-                        href={`#${it.id}`}
-                        onClick={() => handleClick(it.id)}
-                        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition ${
-                          isActive
-                            ? "border-slate-900 bg-slate-900 text-white"
-                            : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                        }`}
+                return (
+                  <a
+                    key={it.id}
+                    href={`#${it.id}`}
+                    onClick={(e) => it.id && handleClick(e, it.id)}
+                    className={[
+                      "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition",
+                      active
+                        ? "border-slate-900 bg-slate-900 text-white shadow-sm"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50",
+                    ].join(" ")}
+                    aria-current={active ? "true" : undefined}
+                  >
+                    {it.num ? (
+                      <span
+                        className={[
+                          "inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-semibold",
+                          active
+                            ? "bg-white/15 text-white"
+                            : "bg-slate-100 text-slate-600",
+                        ].join(" ")}
                       >
-                        <span className="text-xs font-semibold">{it.num}</span>
-                        <span className="whitespace-nowrap">{chipLabel}</span>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              {/* DESKTOP */}
-              <ol className="hidden items-center justify-between gap-3 md:flex">
-                {items.map((it, idx) => {
-                  const isActive = it.id === activeId;
-                  const isLast = idx === items.length - 1;
-                  const itemLabel = it.shortTitle ?? it.title;
-
-                  return (
-                    <li key={it.id} className="flex-1">
-                      <div className="flex items-center">
-                        <a
-                          href={`#${it.id}`}
-                          onClick={() => handleClick(it.id)}
-                          className="group inline-flex items-center gap-3"
-                        >
-                          <span
-                            className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold transition ${
-                              isActive
-                                ? "bg-slate-900 text-white"
-                                : "border border-slate-200 bg-white text-slate-900 group-hover:bg-slate-50"
-                            }`}
-                          >
-                            {it.num}
-                          </span>
-
-                          <span
-                            className={`whitespace-nowrap text-sm font-semibold transition ${
-                              isActive ? "text-slate-900" : "text-slate-700"
-                            }`}
-                          >
-                            {itemLabel}
-                          </span>
-                        </a>
-
-                        {!isLast && <div className="mx-3 h-px flex-1 bg-slate-200" />}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ol>
+                        {it.num}
+                      </span>
+                    ) : null}
+                    <span>{it.title}</span>
+                  </a>
+                );
+              })}
             </nav>
+          </div>
 
-            {ctaHref && ctaLabel ? (
+          {ctaHref && ctaLabel ? (
+            <Link
+              href={ctaHref}
+              className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+            >
+              {ctaLabel}
+            </Link>
+          ) : null}
+        </div>
+
+        <div className="lg:hidden">
+          <div
+            ref={mobileNavRef}
+            className="overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            <nav className="flex w-max min-w-full items-center gap-2">
+              {items.map((it) => {
+                const active = activeId === it.id;
+
+                return (
+                  <a
+                    key={it.id}
+                    ref={(el) => {
+                      if (it.id) mobileItemRefs.current[it.id] = el;
+                    }}
+                    href={`#${it.id}`}
+                    onClick={(e) => it.id && handleClick(e, it.id)}
+                    className={[
+                      "inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition",
+                      active
+                        ? "border-slate-900 bg-slate-900 text-white shadow-sm"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50",
+                    ].join(" ")}
+                    aria-current={active ? "true" : undefined}
+                  >
+                    {it.num ? (
+                      <span
+                        className={[
+                          "inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-semibold",
+                          active
+                            ? "bg-white/15 text-white"
+                            : "bg-slate-100 text-slate-600",
+                        ].join(" ")}
+                      >
+                        {it.num}
+                      </span>
+                    ) : null}
+                    <span className="whitespace-nowrap">{it.title}</span>
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
+
+          {ctaHref && ctaLabel ? (
+            <div className="mt-3">
               <Link
                 href={ctaHref}
-                className="hidden shrink-0 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 md:inline-flex"
+                className="inline-flex h-10 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
               >
                 {ctaLabel}
               </Link>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

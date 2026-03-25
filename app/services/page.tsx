@@ -41,73 +41,102 @@ export default function ServicesPage() {
 
   return (
     <main id="top">
-      {/* Hero Banner principal */}
-      <section className="relative overflow-hidden">
-        <div className="relative h-[78svh] min-h-[520px] md:h-[82svh] lg:h-[88svh]">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            
-            className="
-              absolute inset-0 z-0
-              h-full w-full
-              object-cover
-              object-[68%_center]
-              md:object-[60%_center]
-              lg:object-center
-            "
+      {/* Hero Banner */}
+{/* Hero Banner — Minimal */}
+<section className="relative overflow-hidden border-b border-slate-200">
+  <div className="relative min-h-[520px] md:min-h-[620px] lg:min-h-[700px]">
+    {/* Background */}
+    <img
+      src="/banner01-background.png"
+      alt="Kubo Global"
+      className="
+        absolute inset-0
+        h-full w-full
+        object-cover
+        object-[72%_center]
+        md:object-[64%_center]
+        lg:object-center
+      "
+    />
+
+    {/* Motion */}
+    <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 hero-grid-motion opacity-15 md:opacity-20" />
+    </div>
+
+    {/* Overlays */}
+    <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#04101b]/92 via-[#071623]/70 to-[#071623]/24" />
+    <div className="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/12 via-transparent to-slate-950/38" />
+
+    {/* Glow accents */}
+    <div className="absolute right-[8%] top-[18%] z-10 h-52 w-52 rounded-full bg-lime-300/10 blur-3xl" />
+    <div className="absolute left-[-4%] top-[14%] z-10 h-44 w-44 rounded-full bg-cyan-400/10 blur-3xl" />
+
+    {/* Content */}
+    <div className="relative z-20 mx-auto flex min-h-[520px] max-w-7xl items-center px-4 pb-12 pt-[calc(var(--header-h)+28px)] md:min-h-[620px] md:px-6 md:pb-16 md:pt-[calc(var(--header-h)+34px)] lg:min-h-[700px]">
+      <div className="max-w-[720px]">
+
+        {/* Label */}
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-lime-300/80">
+          Modelo de intervención        
+          </p>
+
+        {/* Headline */}
+        <h1 className="mt-5 max-w-[16ch] text-[34px] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[42px] md:text-[52px] lg:text-[60px]">
+        Seis intervenciones para estructurar iniciativas complejas.
+        </h1>
+
+        {/* Accent line */}
+        <div className="mt-6 h-[2px] w-20 bg-gradient-to-r from-[#d7f70e] to-transparent" />
+
+        {/* Description */}
+        <p className="mt-6 max-w-2xl text-[15px] leading-8 text-slate-300 md:text-base md:leading-8 lg:text-lg">
+        No son un checklist. Son tipos de intervención que se combinan
+        según la naturaleza del problema, su complejidad y el nivel de riesgo operativo.
+        </p>
+
+        {/* CTA */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/contact"
+            className="inline-flex h-12 items-center justify-center rounded-2xl bg-[#d7f70e] px-6 text-base font-semibold text-slate-950 transition hover:brightness-95"
           >
-            
-            <source src="/videos/kubo-motion.mp4" type="video/mp4" />
-          </video>
-          
-
-          <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 hero-grid-motion opacity-30" />
-            <div className="absolute inset-0">
-              <div className="hero-scan-line absolute left-0 right-0 h-[160px]" />
-            </div>
-          </div>
-
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#071623]/78 via-[#071623]/40 to-[#071623]/16" />
-          <div className="absolute inset-0 z-10 bg-black/15" />
-          <div className="absolute right-0 top-0 bottom-0 z-10 w-[42%] bg-gradient-to-l from-[#071623]/85 to-transparent" />
-
-          <div className="absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-white to-transparent" />
-          
+            Conversar
+          </Link>
         </div>
-
-        
-      </section>
-
+      </div>
+    </div>
+  </div>
+</section>
 
       <Section pad="lg">
         <InterventionsSticky />
       </Section>
 
-      <section className="k-surface p-8">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          La intervención correcta depende del impacto esperado.
-        </h2>
+<Section tone="white">
+  <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
+    <div className="mx-auto mb-5 h-[2px] w-16 bg-gradient-to-r from-transparent via-[#d7f70e] to-transparent" />
 
-        <p className="mt-3 max-w-3xl text-slate-600">
-          Si estás evaluando una iniciativa crítica, conversemos antes de
-          ejecutar. Te ayudamos a definir si tiene sentido, qué riesgos existen
-          y cómo estructurarla.
-        </p>
+    <div className="space-y-5">
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+        Conversación inicial
+      </p>
 
-        <div className="mt-6">
-          <Link
-            href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
-          >
-            Iniciar conversación
-          </Link>
-        </div>
-      </section>
+      <h2 className="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+        ¿Lo revisamos juntos?
+      </h2>
+
+      <div className="pt-2">
+        <Link
+          href="/contact"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-6 text-sm font-semibold text-white transition hover:bg-slate-800"
+        >
+          Iniciar conversación
+        </Link>
+      </div>
+    </div>
+  </div>
+</Section>
     </main>
   );
 }

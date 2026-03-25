@@ -7,32 +7,32 @@ import HeroHeadline from "./components/HeroHeadline";
 const interventionCards = [
   {
     title: "Consultoría Estratégica y Diagnóstico",
-    desc: "Identificamos fricciones estructurales, oportunidades y riesgos antes de invertir.",
+    desc: "Identificamos fricciones, riesgos y oportunidades que afectan decisiones clave antes de invertir.",
     href: "/services#diagnostico",
   },
   {
     title: "Diseño de Estrategia y Plan de Ejecución",
-    desc: "Traducimos visión en un plan ejecutable: métricas, roadmap, capacidades y dependencias.",
+    desc: "Traducimos visión en decisiones estructuradas: métricas, roadmap, capacidades y dependencias claras.",
     href: "/services#estrategia",
   },
   {
     title: "Ejecución de Iniciativas y Soluciones",
-    desc: "Acompañamos implementación con disciplina: alineación, control de alcance y resultados.",
+    desc: "Aseguramos que las decisiones se ejecuten con disciplina, alineación y control de resultados.",
     href: "/services#ejecucion",
   },
   {
     title: "Evaluación, Riesgo y Readiness Operativa",
-    desc: "Validamos readiness organizacional, técnica y operativa para evitar fallas previsibles.",
+    desc: "Evaluamos si la organización está preparada para ejecutar decisiones sin generar fricción o fallas previsibles.",
     href: "/services#readiness",
   },
   {
     title: "Integración de Soluciones y Ecosistema",
-    desc: "Integramos sin romper: arquitectura evolutiva, datos, APIs, seguridad y operación.",
+    desc: "Definimos cuándo construir, integrar o adoptar soluciones existentes, evitando complejidad innecesaria y decisiones que fragmentan el ecosistema.",
     href: "/services#integracion",
   },
   {
     title: "Capacidades de Producto (PMaaS)",
-    desc: "Fortalecemos Product Management: gobernanza, métricas, rituales y toma de decisiones.",
+    desc: "Fortalecemos Product Management: gobernanza, métricas, rituales y toma de decisiones, con acompañamiento directo en la operación.",
     href: "/services#pmaas",
   },
 ];
@@ -43,7 +43,7 @@ export default function Home() {
 
     <main>
 
-{/* Hero Banner principal */}
+      {/* Hero Banner principal */}
       <section className="relative overflow-hidden">
         <div className="relative h-[520px] md:h-[640px] lg:h-[720px]">
           {/* Background */}
@@ -111,12 +111,12 @@ export default function Home() {
               </p>
 
               <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-                Tecnología como medio no como fin.
+                Tecnología como medio. Producto como criterio.
               </h1>
 
               <p className="text-lg text-slate-600">
                 Kubo Global interviene en iniciativas críticas donde el resultado del negocio depende
-                de decisiones estructurales bien diseñadas y correctamente ejecutadas.
+                de decisiones de producto claras, correctamente priorizadas y ejecutadas con disciplina.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -148,7 +148,38 @@ export default function Home() {
         </section>
       </Section>
 
-            {/* Run–Grow–Transform */}
+      <Section tone="white">
+        <section className="k-surface p-8 md:p-12">
+          <div className="max-w-4xl space-y-6">
+
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+              Product Ownership
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.15]">
+              Toda iniciativa necesita una{" "}
+              <span className="text-slate-900">lógica clara de decisión</span>.
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2 pt-2">
+
+              <p className="text-base text-slate-600 leading-relaxed">
+                Estrategia y tecnología no operan por separado. Entre ambas existe una capa crítica:
+                <span className="text-slate-900 font-medium"> la disciplina que define qué se construye, por qué y en qué orden.</span>
+              </p>
+
+              <p className="text-base text-slate-600 leading-relaxed">
+                En Kubo Global aplicamos esa lógica a distintos niveles: ejecución, dirección de producto
+                y orquestación de iniciativas complejas.
+              </p>
+
+            </div>
+
+          </div>
+        </section>
+      </Section>
+
+      {/* Run–Grow–Transform */}
       <Section tone="soft">
         <section className="k-surface-soft p-6 md:p-8">
           <div className="space-y-2">
@@ -157,8 +188,8 @@ export default function Home() {
             </p>
             <h2 className="text-2xl font-semibold tracking-tight">Run · Grow · Transform</h2>
             <p className="text-sm text-slate-600">
-              Priorizamos iniciativas según su papel real en la operación: estabilizar, escalar o
-              rediseñar.
+              Priorizamos iniciativas según su impacto real en la operación, guiados por decisiones claras
+              sobre qué estabilizar, escalar o rediseñar.
             </p>
           </div>
 
@@ -166,15 +197,15 @@ export default function Home() {
             {[
               {
                 title: "Run",
-                desc: "Optimizar y estabilizar lo que ya opera. Reducir fricción, proteger margen y elevar eficiencia.",
+                desc: "Optimizar y estabilizar lo que ya opera, reduciendo fricción y protegiendo el resultado del negocio."
               },
               {
                 title: "Grow",
-                desc: "Expandir capacidad y resultados. Escalar conversión, productividad o throughput con control.",
+                desc: "Escalar resultados existentes, priorizando iniciativas que aumenten conversión, productividad o throughput con control.",
               },
               {
                 title: "Transform",
-                desc: "Rediseñar estructura. Arquitectura, modelo operativo o ventaja competitiva, no solo mejoras.",
+                desc: "Rediseñar estructura, arquitectura o modelo operativo cuando el impacto requiere algo más que mejoras incrementales.",
               },
             ].map((card) => (
               <div key={card.title} className="k-surface p-6">
@@ -196,7 +227,7 @@ export default function Home() {
                 Modelo de intervención
               </p>
               <h2 className="text-2xl font-semibold tracking-tight">
-                Un marco claro para convertir decisiones en resultados.
+                Un marco claro para convertir decisiones en resultados medibles.
               </h2>
               <p className="text-sm text-slate-600">
                 Intervenimos por impacto, no por tareas. Cada iniciativa se estructura con métricas,
@@ -252,54 +283,89 @@ export default function Home() {
 
 
       {/* Dominios */}
-      <Section tone="soft">
-        <section className="space-y-5">
-          <div className="space-y-2">
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Dominios</p>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Operamos donde la complejidad exige estructura.
-            </h2>
-            <p className="text-sm text-slate-600">
-              Aplicamos el mismo modelo de intervención en dominios distintos: el foco siempre es
-              impacto medible.
-            </p>
-          </div>
+<Section tone="soft">
+  <section className="space-y-6">
+    <div className="max-w-3xl space-y-3">
+      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+        Dominios
+      </p>
 
-          <section className="grid gap-6 md:grid-cols-4">
-            {[
-              {
-                title: "Search & AI",
-                desc: "Decisiones de relevancia, arquitectura y medición que impactan conversión y eficiencia comercial.",
-              },
-              {
-                title: "eCommerce",
-                desc: "Ecosistema digital, catálogo, experiencia de descubrimiento e integración con sistemas críticos.",
-              },
-              {
-                title: "Supply Chain / Operaciones",
-                desc: "Disponibilidad operativa, trazabilidad, costos y digitalización de procesos distribuidos.",
-              },
-              {
-                title: "Plataformas complejas",
-                desc: "Arquitectura evolutiva, integración, gobernanza y reducción de riesgo estructural.",
-              },
-            ].map((card) => (
-              <div key={card.title} className="k-surface p-6">
-                <h3 className="text-base font-semibold">{card.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{card.desc}</p>
-              </div>
-            ))}
+      <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+        Operamos en dominios distintos. La diferencia está en cómo se toman las decisiones dentro de ellos.
+      </h2>
 
-            {/* CTA como card para que no rompa el grid */}
-            <Link
-              href="/contact" 
-              className="k-surface flex items-center justify-center p-6 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-            >
-              Conversar
-            </Link>
-          </section>
-        </section>
-      </Section>
+      <p className="text-sm leading-7 text-slate-600 md:text-base">
+        Adaptamos la intervención al contexto, manteniendo el foco en impacto,
+        claridad y ejecución con criterio.
+      </p>
+    </div>
+
+    {/* Capa transversal */}
+    <div className="rounded-2xl border border-slate-200 bg-white/80 px-5 py-4 shadow-[0_8px_24px_rgba(15,23,42,0.035)] backdrop-blur-sm">
+      <p className="text-sm leading-6 text-slate-600">
+        En todos los dominios operamos a través de{" "}
+        <span className="font-semibold text-slate-900">
+          Product Ownership
+        </span>{" "}
+        como capacidad transversal para estructurar decisiones, priorizar correctamente
+        y ejecutar con control.
+      </p>
+    </div>
+
+    <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {[
+        {
+          eyebrow: "Search & AI",
+          title: "Relevancia, discovery y arquitectura de búsqueda",
+          desc: "Intervenimos donde la búsqueda impacta conversión, experiencia y eficiencia comercial.",
+        },
+        {
+          eyebrow: "eCommerce",
+          title: "Catálogo, experiencia digital e integración",
+          desc: "Alineamos experiencia, arquitectura y operación comercial en contextos de evolución constante.",
+        },
+        {
+          eyebrow: "Supply Chain / Operaciones",
+          title: "Visibilidad, control y capacidad operativa",
+          desc: "Estructuramos decisiones sobre trazabilidad, costos y digitalización de procesos distribuidos.",
+        },
+        {
+          eyebrow: "Plataformas complejas",
+          title: "Integración, gobernanza y riesgo estructural",
+          desc: "Intervenimos donde múltiples sistemas y dependencias elevan la complejidad operativa.",
+        },
+      ].map((card) => (
+        <article
+          key={card.eyebrow}
+          className="group relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)]"
+        >
+          <div className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#d7f70e] to-transparent transition-transform duration-300 group-hover:scale-x-100" />
+
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+            {card.eyebrow}
+          </p>
+
+          <h3 className="mt-3 text-base font-semibold leading-6 text-slate-950">
+            {card.title}
+          </h3>
+
+          <p className="mt-3 text-sm leading-7 text-slate-600">
+            {card.desc}
+          </p>
+        </article>
+      ))}
+    </section>
+
+    <div className="pt-1">
+      <Link
+        href="/domains"
+        className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+      >
+        Ver dominios
+      </Link>
+    </div>
+  </section>
+</Section>
 
       {/* Cierre + CTA */}
       <Section tone="dark">

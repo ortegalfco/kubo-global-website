@@ -272,18 +272,14 @@ export default function InterventionsSticky() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-            Framework de intervención
+            Intervenciones          
           </p>
 
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-            Seis intervenciones, combinables según impacto y riesgo.
+            La combinación depende del contexto.
           </h2>
 
-          <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">
-            No son un checklist. Son tipos de intervención que se combinan según
-            la naturaleza de la iniciativa, su complejidad y el nivel de riesgo
-            operativo.
-          </p>
+
         </div>
 
         {/* Desktop */}

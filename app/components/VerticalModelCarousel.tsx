@@ -3,18 +3,18 @@
 const modelCards = [
   {
     label: "Run",
-    title: "Continuidad operativa y resiliencia",
-    desc: "Aseguramos estabilidad, control operativo y capacidad de respuesta en plataformas críticas.",
+    title: "Continuidad con control",
+    desc: "Protegemos la operación priorizando estabilidad, resiliencia y reducción de fricción en capacidades críticas.",
   },
   {
     label: "Grow",
-    title: "Optimización de plataformas digitales",
-    desc: "Mejoramos relevancia, operación y experiencia para generar impacto medible en negocio.",
+    title: "Crecimiento con criterio",
+    desc: "Escalamos resultados donde existe impacto esperado, ampliando capacidad y desempeño sin perder control.",
   },
   {
     label: "Transform",
-    title: "Nuevos modelos tecnológicos",
-    desc: "Diseñamos evolución estructural, capacidades nuevas y arquitectura para crecimiento sostenible.",
+    title: "Cambio estructural con propósito",
+    desc: "Rediseñamos estructura, modelo operativo o arquitectura cuando el impacto requiere algo más que mejoras incrementales.",
   },
 ];
 

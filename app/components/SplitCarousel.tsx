@@ -21,14 +21,14 @@ export function SplitCarousel() {
   const slides: Slide[] = useMemo(
     () => [
       {
-        eyebrow: "Kubo Global",
+        eyebrow: "Enfoque",
         title: "Estrategia primero. Ejecución después.",
         description:
-          "Intervenimos solo donde la decisión cambia el resultado y el impacto es medible.",
+        "Intervenimos donde las decisiones definen el resultado y el impacto es medible.",
         leftLabel: "Principio",
         leftValue: "Impacto medible",
         quote:
-          "No operamos por volumen ni por tendencia. Intervenimos donde el resultado lo exige.",
+        "No intervenimos por volumen ni por tendencia. Intervenimos donde una decisión cambia el resultado.",
         author: "Kubo Global",
         role: "Strategy & Technology Advisory",
         primaryCta: { label: "Explorar el modelo", href: "/model" },
@@ -38,11 +38,11 @@ export function SplitCarousel() {
         eyebrow: "Intervenciones",
         title: "Estructura antes de ejecución.",
         description:
-          "Un marco claro para convertir decisiones en resultados, con métricas y responsabilidad definidas.",
+        "Un marco claro para convertir decisiones en resultados, con métricas y responsabilidad explícitas.",
         leftLabel: "Marco",
         leftValue: "6 intervenciones",
         quote:
-          "Sin claridad estratégica no hay ejecución efectiva. Sin métricas, no hay responsabilidad real.",
+        "Sin claridad estratégica no hay ejecución efectiva. Sin métricas, no hay responsabilidad.",
         author: "Kubo Global",
         role: "Intervention Framework",
         primaryCta: { label: "Ver intervenciones", href: "/services" },
@@ -52,11 +52,11 @@ export function SplitCarousel() {
         eyebrow: "Marco transversal",
         title: "Run · Grow · Transform",
         description:
-          "Priorizamos para estabilizar, escalar o rediseñar estructura, con control de riesgo.",
+        "Priorizamos para estabilizar, escalar o rediseñar estructura, según el impacto real de cada iniciativa.",
         leftLabel: "Decisión estratégica",
         leftValue: "RUN / GROW / TRANSFORM",
         quote:
-          "No toda iniciativa merece inversión. Primero se define el impacto estructural, después el presupuesto.",
+          "No toda iniciativa merece inversión. Primero se define el impacto, después la ejecución.",
         author: "Kubo Global",
         role: "Strategic Prioritization",
         primaryCta: { label: "Explorar el marco", href: "/model#run-grow-transform" },
@@ -66,14 +66,14 @@ export function SplitCarousel() {
         eyebrow: "Dominios de complejidad",
         title: "Aplicamos criterio en entornos exigentes.",
         description:
-          "Search & AI, eCommerce, Supply Chain y plataformas complejas: el rigor estratégico no cambia.",
+          "Search & AI, eCommerce, Supply Chain y plataformas complejas: el criterio y la toma de decisiones no cambian.",
         leftLabel: "Ámbitos",
         leftValue: "4 dominios",
         quote:
-          "La tecnología es un medio. El objetivo es mejorar el resultado operativo y estratégico.",
+          "La tecnología es un medio. El resultado depende de las decisiones que la gobiernan.",
         author: "Kubo Global",
         role: "Applied Strategy",
-        primaryCta: { label: "Ver dominios", href: "/services#domains" },
+        primaryCta: { label: "Ver dominios", href: "/domains" },
         secondaryCta: { label: "Ver el modelo", href: "/model" },
       },
     ],
