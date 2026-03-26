@@ -157,37 +157,88 @@ export default function RootLayout({
 
             <main className="w-full flex-1">{children}</main>
 
-            <footer className="relative mt-12 bg-white">
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgb(215_247_14_/_0.6)]" />
+            <footer className="relative mt-16 border-t border-white/10 bg-[#071019] text-slate-200">
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgb(215_247_14_/_0.55)]" />
 
-              <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                  <div className="text-sm text-slate-600">
-                    <div className="font-semibold text-slate-900">Kubo Global</div>
-
-                    <div className="mt-2 text-slate-500">
-                      Tecnología y estrategia para operaciones complejas.
-                    </div>
-
-                    <div className="mt-4 text-xs text-slate-400">
-                      © {new Date().getFullYear()} Kubo Global
-                    </div>
+              <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
+                <div className="max-w-md">
+                  <div className="text-base font-semibold tracking-tight text-white">
+                    Kubo Global
                   </div>
 
-                  <div className="flex flex-col gap-2 text-sm text-slate-500 md:items-end">
+                  <p className="mt-3 text-sm text-slate-400">
+                    Tecnología y estrategia.
+                  </p>
+
+                  <p className="mt-3 text-sm leading-6 text-slate-400">
+                    Estrategia, ejecución y tecnología conectadas por decisiones de producto.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Explorar
+                  </div>
+
+                  <nav className="mt-4 flex flex-col gap-3 text-sm">
+                    <a href="/services" className="transition hover:text-white">Qué hacemos</a>
+                    <a href="/pmaas" className="transition hover:text-white">PMaaS</a>
+                    <a href="/domains" className="transition hover:text-white">Dominios</a>
+                    <a href="/search-platform" className="transition hover:text-white">Search Platform</a>
+                    <a href="/contact" className="transition hover:text-white">Conversar</a>
+                  </nav>
+                </div>
+
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Cómo trabajamos
+                  </div>
+
+                  <nav className="mt-4 flex flex-col gap-3 text-sm">
+                    <a href="/model" className="transition hover:text-white">Modelo</a>
+                    <a href="/approach" className="transition hover:text-white">Marco de Trabajo</a>
+                    <a href="/demo" className="transition hover:text-white">Search Lab</a>
+                  </nav>
+                </div>
+
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Contacto
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-3 text-sm text-slate-400">
                     <a
                       href="mailto:contacto@kubo-global.com"
-                      className="transition hover:text-slate-700"
+                      className="transition hover:text-white"
                     >
                       contacto@kubo-global.com
                     </a>
 
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span>Estrategia clara.</span>
-                      <span className="opacity-50">•</span>
-                      <span>Tecnología con propósito.</span>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/company/kubo-global"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition hover:text-white"
+                    >
+                      LinkedIn
+                    </a>
+
+                    <div>Mexico</div>
+
+                    <a
+                      href="/contact"
+                      className="inline-flex w-fit items-center rounded-md border border-white/10 bg-white/5 px-4 py-2 font-medium text-white transition hover:border-[rgb(215_247_14_/_0.35)] hover:bg-white/10"
+                    >
+                      Conversar
+                    </a>
                   </div>
+                </div>
+              </div>
+
+              <div className="border-t border-white/10">
+                <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-5 text-xs text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+                  <div>© {new Date().getFullYear()} Kubo Global</div>
+                  <div>Para iniciativas donde el criterio sí cambia el resultado.</div>
                 </div>
               </div>
             </footer>

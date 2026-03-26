@@ -26,6 +26,9 @@ export function WhatsAppFloat({
     if (path.startsWith("/approach")) {
       return "Hola, me interesa entender mejor el approach de trabajo de Kubo Global.";
     }
+        if (path.startsWith("/pmaas")) {
+      return "Hola, quiero conocer más sobre los PMaasS  de Kubo Global.";
+    }
 
     if (path.startsWith("/domains")) {
       return "Hola, quiero conocer más sobre los dominios y capacidades de Kubo Global.";
