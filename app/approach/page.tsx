@@ -126,7 +126,7 @@ export default function ApproachPage() {
               </div>
 
               <h1 className="mt-5 max-w-[12ch] text-[34px] font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-[42px] md:text-[52px] lg:text-[56px]">
-                Intervenimos con estructura, no con improvisación.
+                Intervenimos donde las decisiones cambian el resultado.
               </h1>
 
               <p className="mt-5 max-w-[580px] text-[15px] leading-7 text-slate-200 md:text-[16px]">
@@ -151,10 +151,10 @@ export default function ApproachPage() {
                 </Link>
 
                 <Link
-                  href="/model"
+                  href="/services"
                   className="inline-flex h-11 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
-                  Ver el modelo
+                  Ver intervenciones
                 </Link>
               </div>
             </div>
@@ -163,12 +163,12 @@ export default function ApproachPage() {
       </section>
 
       {/* TIMELINE */}
-<TimelineNav
-  label="Framework"
-  items={navItems}
-  ctaHref="/contact"
-  ctaLabel="Conversar"
-/>
+      <TimelineNav
+        label="Framework"
+        items={navItems}
+        ctaHref="/contact"
+        ctaLabel="Conversar"
+      />
 
       {/* INTRO */}
       <section className="mx-auto max-w-6xl px-4 pt-14 md:pt-16">
@@ -178,7 +178,7 @@ export default function ApproachPage() {
           </p>
 
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-            Un framework flexible, no una receta rígida.
+            Una estructura flexible, no una receta rígida.
           </h2>
 
           <p className="mt-4 text-base leading-7 text-slate-600">

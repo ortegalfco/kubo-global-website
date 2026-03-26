@@ -219,7 +219,7 @@ export function Header() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
             <nav className="flex items-center gap-1">
               {navItems
                 .filter((i) => i.href !== "/contact")
@@ -252,13 +252,14 @@ export function Header() {
             <Link
               href="/contact"
               className={[
-                "inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm transition duration-200",
+                "inline-flex items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold shadow-sm transition duration-200",
                 useDarkLogo
                   ? "bg-slate-900 text-white hover:ring-2 hover:ring-[rgb(215_247_14_/_0.35)]"
-                  : "bg-white/15 text-white border border-white/20 backdrop-blur hover:bg-white/20",
+                  : "bg-[rgb(215_247_14)] text-black hover:brightness-95",
               ].join(" ")}
             >
               Conversar
+              <span className="text-xs">↗</span>
             </Link>
           </div>
 
@@ -267,13 +268,14 @@ export function Header() {
             <Link
               href="/contact"
               className={[
-                "inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition duration-200",
+                "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold shadow-sm transition duration-200",
                 useDarkLogo
                   ? "bg-slate-900 text-white"
-                  : "bg-white/15 text-white border border-white/20 backdrop-blur hover:bg-white/20",
+                  : "bg-[rgb(215_247_14)] text-black hover:brightness-95",
               ].join(" ")}
             >
               Conversar
+              <span className="text-xs">↗</span>
             </Link>
 
             <button

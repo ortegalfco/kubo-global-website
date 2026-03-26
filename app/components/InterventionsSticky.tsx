@@ -141,6 +141,7 @@ function StickyCard({
   total: number;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const isPmaas = item.slug === "pmaas";
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -169,20 +170,52 @@ function StickyCard({
           zIndex: total + index,
         }}
       >
-        <article className="overflow-hidden rounded-[32px] border border-slate-200 bg-white">
+        <article
+          className={[
+            "overflow-hidden rounded-[32px] bg-white",
+            isPmaas
+              ? "border border-[rgba(215,247,14,0.32)] shadow-[0_24px_80px_rgba(15,23,42,0.10)]"
+              : "border border-slate-200",
+          ].join(" ")}
+        >
           <div className="grid min-h-[10vh] grid-cols-1 lg:grid-cols-[1.08fr_0.92fr]">
             {/* Columna izquierda */}
             <div className="flex flex-col justify-between p-4 md:p-5 xl:p-6">
               <div>
                 <div className="flex items-center gap-4">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
+                  <div
+                    className={[
+                      "inline-flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold",
+                      isPmaas
+                        ? "bg-[rgba(215,247,14,0.14)] text-slate-900 ring-1 ring-[rgba(215,247,14,0.34)]"
+                        : "bg-slate-900 text-white",
+                    ].join(" ")}
+                  >
                     {item.id}
                   </div>
 
-                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-slate-500">
-                    {item.eyebrow}
-                  </p>
+                  <div
+                    className={[
+                      "inline-flex items-center rounded-full px-3 py-1",
+                      isPmaas ? "bg-[rgba(215,247,14,0.10)]" : "bg-transparent",
+                    ].join(" ")}
+                  >
+                    <p
+                      className={[
+                        "text-xs font-semibold uppercase tracking-[0.20em]",
+                        isPmaas ? "text-slate-800" : "text-slate-500",
+                      ].join(" ")}
+                    >
+                      {item.eyebrow}
+                    </p>
+                  </div>
                 </div>
+
+                {isPmaas && (
+                  <div className="mt-4 inline-flex items-center rounded-full border border-[rgba(215,247,14,0.28)] bg-[rgba(215,247,14,0.10)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-800">
+                    Capacidad destacada
+                  </div>
+                )}
 
                 <h3 className="mt-3 max-w-2xl text-[2rem] font-semibold tracking-tight text-slate-900 md:text-[2.35rem] md:leading-[1.02]">
                   {item.title}
@@ -209,19 +242,30 @@ function StickyCard({
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
-                >
-                  Conversar
-                </Link>
+                {isPmaas ? (
+                  <>
+                    <Link
+                      href="/pmaas"
+                      className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                    >
+                      Explorar PMaaS
+                    </Link>
 
-                <Link
-                  href="/approach"
-                  className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                >
-                  Ver el modelo
-                </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                    >
+                      Conversar
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  >
+                    Conversar
+                  </Link>
+                )}
               </div>
             </div>
 
@@ -230,8 +274,22 @@ function StickyCard({
               style={{ x: rightX }}
               className="relative overflow-hidden border-t border-slate-200 bg-slate-50 lg:border-l lg:border-t-0"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.10),transparent_24%),linear-gradient(to_bottom_right,rgba(255,255,255,0.90),rgba(248,250,252,0.98))]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.05),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.025),transparent_24%)]" />
+              <div
+                className={[
+                  "absolute inset-0",
+                  isPmaas
+                    ? "bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.16),transparent_24%),linear-gradient(to_bottom_right,rgba(255,255,255,0.94),rgba(248,250,252,0.98))]"
+                    : "bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.10),transparent_24%),linear-gradient(to_bottom_right,rgba(255,255,255,0.90),rgba(248,250,252,0.98))]",
+                ].join(" ")}
+              />
+              <div
+                className={[
+                  "absolute inset-0",
+                  isPmaas
+                    ? "bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.08),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.04),transparent_24%)]"
+                    : "bg-[radial-gradient(circle_at_top_right,rgba(215,247,14,0.05),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.025),transparent_24%)]",
+                ].join(" ")}
+              />
 
               <div className="relative flex h-full flex-col justify-between p-4 text-slate-900 md:p-5 xl:p-6">
                 <div>
@@ -251,10 +309,18 @@ function StickyCard({
                   </ul>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4 backdrop-blur-sm">
+                <div
+                  className={[
+                    "mt-4 rounded-2xl p-4 backdrop-blur-sm",
+                    isPmaas
+                      ? "border border-[rgba(215,247,14,0.28)] bg-white/88"
+                      : "border border-slate-200 bg-white/80",
+                  ].join(" ")}
+                >
                   <p className="text-sm leading-6 text-slate-600">
-                    Se puede combinar con otras intervenciones según madurez,
-                    urgencia, impacto esperado y nivel de riesgo operativo.
+                    {isPmaas
+                      ? "PMaaS puede operar como capacidad transversal dentro de iniciativas críticas, conectando decisión, prioridad y ejecución."
+                      : "Se puede combinar con otras intervenciones según madurez, urgencia, impacto esperado y nivel de riesgo operativo."}
                   </p>
                 </div>
               </div>
@@ -272,129 +338,187 @@ export default function InterventionsSticky() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-            Intervenciones          
+            Intervenciones
           </p>
 
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
             La combinación depende del contexto.
           </h2>
-
-
         </div>
 
         {/* Desktop */}
         <div className="mt-12 hidden lg:block">
           <div className="relative">
             {interventions.map((item, index) => (
-                     <section
-        key={item.id}
-         id={`desktop-${item.slug}`}
-        className="scroll-mt-32"
-      >
-              <StickyCard
-                item={item}
-                index={index}
-                total={interventions.length}
-              />
-                </section>
+              <section
+                key={item.id}
+                id={`desktop-${item.slug}`}
+                className="scroll-mt-32"
+              >
+                <StickyCard
+                  item={item}
+                  index={index}
+                  total={interventions.length}
+                />
+              </section>
             ))}
           </div>
         </div>
 
+        {/* Mobile */}
+        <div className="mt-10 space-y-8 lg:hidden">
+          {interventions.map((item, index) => {
+            const isPmaas = item.slug === "pmaas";
 
-{/* Mobile */}
-<div className="mt-10 space-y-8 lg:hidden">
-  {interventions.map((item, index) => (
-    <motion.article
-      key={item.id}
-      id={`mobile-${item.slug}`}
-      initial={{
-        opacity: 0,
-        y: 24,
-        x: index % 2 === 0 ? -10 : 10,
-        scale: 0.985,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1,
-      }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{
-        duration: 0.45,
-        delay: index * 0.04,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
-    >
-      <div className="bg-slate-50 p-5">
-        <div className="flex items-center gap-3">
-          <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-            {item.id}
-          </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-            {item.eyebrow}
-          </p>
+            return (
+              <motion.article
+                key={item.id}
+                id={`mobile-${item.slug}`}
+                initial={{
+                  opacity: 0,
+                  y: 24,
+                  x: index % 2 === 0 ? -10 : 10,
+                  scale: 0.985,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  x: 0,
+                  scale: 1,
+                }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  duration: 0.45,
+                  delay: index * 0.04,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={[
+                  "overflow-hidden rounded-[24px] bg-white shadow-[0_12px_40px_rgba(15,23,42,0.06)]",
+                  isPmaas
+                    ? "border border-[rgba(215,247,14,0.32)]"
+                    : "border border-slate-200",
+                ].join(" ")}
+              >
+                <div className="bg-slate-50 p-5">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={[
+                        "inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold",
+                        isPmaas
+                          ? "bg-[rgba(215,247,14,0.14)] text-slate-900 ring-1 ring-[rgba(215,247,14,0.34)]"
+                          : "bg-slate-900 text-white",
+                      ].join(" ")}
+                    >
+                      {item.id}
+                    </div>
+
+                    <div
+                      className={[
+                        "inline-flex items-center rounded-full px-3 py-1",
+                        isPmaas ? "bg-[rgba(215,247,14,0.10)]" : "bg-transparent",
+                      ].join(" ")}
+                    >
+                      <p
+                        className={[
+                          "text-xs font-semibold uppercase tracking-[0.18em]",
+                          isPmaas ? "text-slate-800" : "text-slate-500",
+                        ].join(" ")}
+                      >
+                        {item.eyebrow}
+                      </p>
+                    </div>
+                  </div>
+
+                  {isPmaas && (
+                    <div className="mt-4 inline-flex items-center rounded-full border border-[rgba(215,247,14,0.28)] bg-[rgba(215,247,14,0.10)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-800">
+                      Capacidad destacada
+                    </div>
+                  )}
+
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-900">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    {item.summary}
+                  </p>
+                </div>
+
+                <div className="space-y-6 p-5">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Cuándo aplicar
+                    </p>
+                    <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
+                      {item.when.map((point) => (
+                        <li key={point} className="flex gap-3">
+                          <span className="mt-[9px] h-1.5 w-1.5 rounded-full bg-slate-400" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div
+                    className={[
+                      "rounded-2xl p-4",
+                      isPmaas
+                        ? "border border-[rgba(215,247,14,0.28)] bg-[rgba(215,247,14,0.06)]"
+                        : "border border-slate-200 bg-slate-50/70",
+                    ].join(" ")}
+                  >
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Resultados esperados
+                    </p>
+                    <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
+                      {item.outcomes.map((point) => (
+                        <li key={point} className="flex gap-3">
+                          <span className="mt-[9px] h-1.5 w-1.5 rounded-full bg-slate-400" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {isPmaas && (
+                    <div className="rounded-2xl border border-[rgba(215,247,14,0.28)] bg-white p-4">
+                      <p className="text-sm leading-6 text-slate-600">
+                        PMaaS puede operar como capacidad transversal dentro de iniciativas críticas, conectando decisión, prioridad y ejecución.
+                      </p>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    {isPmaas ? (
+                      <>
+                        <Link
+                          href="/pmaas"
+                          className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                        >
+                          Explorar PMaaS
+                        </Link>
+
+                        <Link
+                          href="/contact"
+                          className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                        >
+                          Conversar
+                        </Link>
+                      </>
+                    ) : (
+                      <Link
+                        href="/contact"
+                        className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      >
+                        Conversar
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
-
-        <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-900">
-          {item.title}
-        </h3>
-
-        <p className="mt-3 text-sm leading-6 text-slate-600">
-          {item.summary}
-        </p>
-      </div>
-
-      <div className="space-y-6 p-5">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Cuándo aplicar
-          </p>
-          <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-            {item.when.map((point) => (
-              <li key={point} className="flex gap-3">
-                <span className="mt-[9px] h-1.5 w-1.5 rounded-full bg-slate-400" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Resultados esperados
-          </p>
-          <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-            {item.outcomes.map((point) => (
-              <li key={point} className="flex gap-3">
-                <span className="mt-[9px] h-1.5 w-1.5 rounded-full bg-slate-400" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
-          >
-            Conversar
-          </Link>
-
-          <Link
-            href="/approach"
-            className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-          >
-            Ver el modelo
-          </Link>
-        </div>
-      </div>
-    </motion.article>
-  ))}
-</div>
       </div>
     </section>
   );
