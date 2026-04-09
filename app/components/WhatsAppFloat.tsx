@@ -37,6 +37,9 @@ export function WhatsAppFloat({
     if (path.startsWith("/model")) {
       return "Hola, me interesa conocer más sobre el modelo de intervención de Kubo Global.";
     }
+    if (path.startsWith("/product-ownership")) {
+      return "Hola, me interesa conocer más sobre el Programa de Desarrollo para Product Owners de Kubo Global.";
+    }
 
     return "Hola, me interesa conocer más sobre las capacidades de Kubo Global.";
   };

@@ -183,6 +183,7 @@ export default function RootLayout({
                   <nav className="mt-4 flex flex-col gap-3 text-sm">
                     <a href="/services" className="transition hover:text-white">Qué hacemos</a>
                     <a href="/pmaas" className="transition hover:text-white">PMaaS</a>
+                    <a href="/product-ownership" className="transition hover:text-white">Programa Product Ownership</a>
                     <a href="/domains" className="transition hover:text-white">Dominios</a>
                     <a href="/search-platform" className="transition hover:text-white">Search Platform</a>
                     <a href="/contact" className="transition hover:text-white">Conversar</a>
