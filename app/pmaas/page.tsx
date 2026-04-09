@@ -27,6 +27,21 @@ const interventionSteps = [
   },
 ];
 
+const capabilityPillars = [
+  {
+    title: "Decisiones",
+    desc: "Desarrollamos criterio para decidir qué construir, por qué y con qué prioridad.",
+  },
+  {
+    title: "Estructura",
+    desc: "Ayudamos a ordenar backlog, producto y conversaciones con mayor lógica de valor.",
+  },
+  {
+    title: "Operación real",
+    desc: "Llevamos el rol a la realidad del equipo, con contexto, presión y decisiones concretas.",
+  },
+];
+
 export default function PMaaSPage() {
   return (
     <main className="bg-white">
@@ -67,6 +82,10 @@ export default function PMaaSPage() {
 
                 <p className="mt-6 max-w-2xl text-[16px] leading-8 text-slate-200 md:text-[18px]">
                   Extendemos dentro del cliente una capacidad de Product Ownership para ordenar decisiones, alinear frentes y sostener la ejecución con mayor claridad.
+                </p>
+
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 md:text-base">
+                  Y cuando el problema no es ejecución, sino cómo se están tomando las decisiones, desarrollamos esa capacidad dentro del equipo.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -210,6 +229,91 @@ export default function PMaaSPage() {
         </div>
       </section>
 
+      {/* CAPABILITY DEVELOPMENT */}
+      <section className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-16">
+        <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+              Desarrollo de capacidad
+            </p>
+
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+              Cuando el problema no es ejecución, sino cómo se decide producto.
+            </h2>
+
+            <p className="mt-5 text-base leading-7 text-slate-600 md:text-lg">
+              Hay iniciativas que no se destraban con más manos, sino con mejor criterio para priorizar, estructurar y operar producto.
+            </p>
+
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              En esos casos, no extendemos capacidad. La desarrollamos dentro del equipo a través de una intervención aplicada de Product Ownership enfocada en la realidad del rol.
+            </p>
+
+            <div className="mt-6 rounded-[24px] border border-lime-200 bg-lime-50/60 p-5">
+              <p className="text-sm font-semibold text-slate-950 md:text-base">
+                No es capacitación tradicional.
+              </p>
+              <p className="mt-2 text-sm leading-7 text-slate-700 md:text-base">
+                Es una forma de intervenir para mejorar cómo el equipo decide, estructura y opera producto.
+              </p>
+            </div>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/product-ownership"
+                className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-slate-800"
+              >
+                Explorar programa
+              </Link>
+
+              <Link
+                href="/contact"
+                className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+              >
+                Conversar sobre este caso
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_12px_36px_rgba(15,23,42,0.05)] md:p-7">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+              Qué desarrollamos
+            </p>
+
+            <div className="mt-5 space-y-4">
+              {capabilityPillars.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="rounded-[22px] border border-slate-200 bg-slate-50/70 p-5"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <h3 className="text-base font-semibold tracking-tight text-slate-950 md:text-lg">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+                    {item.desc}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-5 rounded-[22px] border border-slate-200 bg-slate-950 px-5 py-4">
+              <p className="text-sm font-medium text-white md:text-base">
+                Dos formas de intervenir:
+              </p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">
+                Extender capacidad cuando hace falta ejecución. Desarrollarla cuando hace falta criterio y madurez en producto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HOW */}
       <section id="how" className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-16">
         <div className="space-y-8">
@@ -258,15 +362,22 @@ export default function PMaaSPage() {
             </h2>
 
             <p className="text-slate-600">
-              Conversemos sobre tu iniciativa y veamos si PMaaS es la forma correcta de intervenir.
+              Conversemos sobre tu iniciativa y veamos si hace falta extender capacidad, desarrollarla dentro del equipo o combinar ambas.
             </p>
 
-            <div className="pt-2">
+            <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row">
               <Link
                 href="/contact"
                 className="inline-flex h-11 items-center justify-center rounded-xl bg-slate-900 px-6 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
                 Conversar
+              </Link>
+
+              <Link
+                href="/product-ownership"
+                className="inline-flex h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+              >
+                Ver programa
               </Link>
             </div>
           </div>
