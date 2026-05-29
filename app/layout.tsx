@@ -245,7 +245,7 @@ export default function RootLayout({
             </footer>
           </div>
 
-          <WhatsAppFloat phone="526674748224" />
+          <WhatsAppFloat phone="526691468195" />
         </AuthProvider>
       </body>
     </html>
