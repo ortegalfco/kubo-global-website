@@ -7,7 +7,7 @@ type WhatsAppFloatProps = {
 };
 
 export function WhatsAppFloat({
-  phone = "526674748224",
+  phone = "526691468195",
 }: WhatsAppFloatProps) {
   const pathname = usePathname();
 
